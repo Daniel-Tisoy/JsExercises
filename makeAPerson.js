@@ -13,10 +13,14 @@ Run the tests to see the expected output for each method. These methods must be 
 */
 const Person = function (first, last) {
     let [firstName, lastName] = [first, last]
-    this.getFullName = () => `${firstName} ${lastName}`
     this.getFirstName = () => firstName;
     this.getLastName = () => lastName;
+    this.getFullName = () => `${this.getFirstName()} ${this.getLastName()}`
+
     this.setFirstName = (f) => firstName = f;
     this.setLastName = (l) => lastName = l;
-    this.setFullName = (f, l) => [firstName, lastName] = [f, l]
+    this.setFullName = (f, l) => {
+        this.setFirstName(f);
+        this.setLastName(l)
+    }
 };
